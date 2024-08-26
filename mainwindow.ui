@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1584</width>
-    <height>918</height>
+    <width>1922</width>
+    <height>982</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,18 +19,18 @@
      <rect>
       <x>60</x>
       <y>30</y>
-      <width>1491</width>
+      <width>1771</width>
       <height>801</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QTableView" name="tableView_candidat">
       <property name="geometry">
        <rect>
-        <x>630</x>
+        <x>680</x>
         <y>160</y>
         <width>721</width>
         <height>311</height>
@@ -47,26 +47,13 @@
        </rect>
       </property>
       <property name="title">
-       <string>Ajouter un formateur</string>
+       <string>Ajouter un candidat</string>
       </property>
       <widget class="QLabel" name="label_9">
        <property name="geometry">
         <rect>
          <x>40</x>
          <y>50</y>
-         <width>56</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_10">
-       <property name="geometry">
-        <rect>
-         <x>80</x>
-         <y>60</y>
          <width>56</width>
          <height>16</height>
         </rect>
@@ -220,7 +207,7 @@
      <widget class="QPushButton" name="supp_ca">
       <property name="geometry">
        <rect>
-        <x>1220</x>
+        <x>1270</x>
         <y>480</y>
         <width>131</width>
         <height>41</height>
@@ -228,6 +215,95 @@
       </property>
       <property name="text">
        <string>Supprimer</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_rech_can">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>111</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>1440</x>
+        <y>200</y>
+        <width>181</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <widget class="QComboBox" name="comboBoxsortchamp_ca">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>40</y>
+         <width>91</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Nom</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Email</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="comboBox_order_ca">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>91</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Ascendant</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Descendant</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="tri_ca">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>140</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>tri</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="pdf_ca">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>480</y>
+        <width>93</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PDF</string>
       </property>
      </widget>
     </widget>
@@ -335,7 +411,7 @@
         <string>Salaire</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="idCandidat_2">
+      <widget class="QLineEdit" name="idOffre">
        <property name="geometry">
         <rect>
          <x>250</x>
@@ -436,6 +512,149 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="page_3">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>381</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <widget class="QLabel" name="id_ca_candidature">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id_candidat</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_idCandidat">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>90</y>
+         <width>73</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>140</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id_offre</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_idOffre">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>140</y>
+         <width>73</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>190</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>date_candidature</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEdit_dateCandidature">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>180</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>230</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Statut</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_statut">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>220</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ajouter_candidature">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>390</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ajouter</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="modifier_candidature">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>390</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>modifier</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QTableView" name="tableView_candidature">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>200</y>
+        <width>591</width>
+        <height>271</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -443,7 +662,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1584</width>
+     <width>1922</width>
      <height>26</height>
     </rect>
    </property>

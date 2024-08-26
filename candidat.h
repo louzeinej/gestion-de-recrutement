@@ -36,7 +36,7 @@ public:
     QSqlQueryModel* afficher();
     bool supprimer(int id);
     bool modifier(int id);
-    static QSqlQueryModel* rechercherParNom( QString nom);
+    static QSqlQueryModel* rechercherParTerme( QString terme);
    QSqlQueryModel* Tri(QString cls, QString champ);
     QBarSeries* getStatSpecialites();
 

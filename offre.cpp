@@ -100,11 +100,11 @@ bool Offre::modifier(int id){
     query.prepare("UPDATE Offre SET titre = :titre, description = :description, date_publication = :date_publication, "
                   "salaire = :salaire WHERE id = :id");
     query.bindValue(":id", id);
-    query.bindValue(":nom", titre);
-    query.bindValue(":email", description);
-    query.bindValue(":telephone", date_publication);
+    query.bindValue(":titre", titre);
+    query.bindValue(":description", description);
+    query.bindValue(":date_publication", date_publication);
 
-    query.bindValue(":experience", salaire);
+    query.bindValue(":salaire", salaire);
 
     return query.exec();
 }

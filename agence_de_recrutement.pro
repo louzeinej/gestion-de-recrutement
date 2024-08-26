@@ -20,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     candidat.cpp \
+    candidature.cpp \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 
 HEADERS += \
     candidat.h \
+    candidature.h \
     connection.h \
     mainwindow.h \
     offre.h

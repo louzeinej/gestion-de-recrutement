@@ -108,5 +108,38 @@ bool Candidat::modifier(int id){
 
     return query.exec();
 }
+QSqlQueryModel* Candidat::rechercherParTerme(QString terme) {
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery query;
+
+    // Préparer la requête pour rechercher par nom, email ou numéro de téléphone
+    query.prepare("SELECT * FROM candidat WHERE nom LIKE :terme OR email LIKE :terme OR telephone LIKE :terme");
+    query.bindValue(":terme", "%" + terme + "%");
+
+    if (query.exec()) {
+        model->setQuery(query);
+    } else {
+        qDebug() << "Failed to execute search query:" << query.lastError().text();
+    }
+
+    return model;
+}
+QSqlQueryModel* Candidat::Tri(QString cls, QString champ) {
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QString queryString = "SELECT * FROM candidat ORDER BY " + champ + " " + cls;
+    QSqlQuery query;
+    query.prepare(queryString);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOM"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("EMAIL"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Téléphone"));
+
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Expérience"));
+
+
+    return model;
+}
 
 

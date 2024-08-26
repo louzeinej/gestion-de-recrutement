@@ -29,6 +29,24 @@ private slots:
 
     void on_ajouter_offre_clicked();
 
+    void on_modfiier_offre_clicked();
+
+    void on_tableView_offre_doubleClicked(const QModelIndex &index);
+
+    void on_supp_offre_clicked();
+
+    void on_lineEdit_rech_can_textChanged( QString terme);
+
+    void on_tri_ca_clicked();
+   void generatePDFca( QString filePath);
+
+   void on_pdf_ca_clicked();
+   void populatecandidatComboBox();
+   void populateOffreComboBox();
+   void populateStautComboBox();
+
+   void on_ajouter_candidature_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
