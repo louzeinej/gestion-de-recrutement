@@ -4,6 +4,11 @@
 #include <QString>
 #include <QDate>
 #include <QSqlQueryModel>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QChartView>
+#include <QSqlError>
+using namespace QtCharts;
 
 class Offre {
 
@@ -39,8 +44,11 @@ public:
     bool supprimer(int id);
     bool modifier(int id);
     QSqlQueryModel* afficher();
-    QSqlQueryModel* rechercherParTitre(QString terme);
-    QSqlQueryModel* trier(QString cls, QString champ);
+    static QSqlQueryModel* rechercherParTerme(QString terme);
+     QSqlQueryModel* Tri(QString cls, QString champ);
+    QBarSeries* getStatOffresParTitre();
+    static QSqlQueryModel* rechercherParDatePublication(QDate date_publication);
+
 
 private:
     int id;

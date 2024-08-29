@@ -3,6 +3,7 @@ QT       += core gui sql
 QT += charts
 QT += network
 
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -24,14 +25,16 @@ SOURCES += \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
-    offre.cpp
+    offre.cpp \
+    smtp.cpp
 
 HEADERS += \
     candidat.h \
     candidature.h \
     connection.h \
     mainwindow.h \
-    offre.h
+    offre.h \
+    smtp.h
 
 FORMS += \
     mainwindow.ui

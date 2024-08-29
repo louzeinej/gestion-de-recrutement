@@ -3,15 +3,14 @@
 #include <QVariant>
 #include <QDebug>
 
-
 // Constructeurs
 Candidat::Candidat() {}
 
-Candidat::Candidat(int id, QString nom, QString email, QString telephone, QString experience)
-    : id(id), nom(nom), email(email), telephone(telephone), experience(experience) {}
+Candidat::Candidat(int id, QString nom, QString email, QString telephone, QString experience, QString cv)
+    : id(id), nom(nom), email(email), telephone(telephone), experience(experience), cv(cv) {}
 
-Candidat::Candidat(QString nom, QString email, QString telephone, QString experience)
-    : nom(nom), email(email), telephone(telephone), experience(experience) {}
+Candidat::Candidat(QString nom, QString email, QString telephone, QString experience, QString cv)
+    : nom(nom), email(email), telephone(telephone), experience(experience), cv(cv) {}
 
 // Getters
 int Candidat::getID() const {
@@ -30,10 +29,12 @@ QString Candidat::getTelephone() const {
     return telephone;
 }
 
-
-
 QString Candidat::getExperience() const {
     return experience;
+}
+
+QString Candidat::getCV() const {
+    return cv;
 }
 
 // Setters
@@ -53,24 +54,26 @@ void Candidat::setTelephone(QString telephone) {
     this->telephone = telephone;
 }
 
-
-
 void Candidat::setExperience(QString experience) {
     this->experience = experience;
 }
 
+void Candidat::setCV(QString cv) {
+    this->cv = cv;
+}
+
 // Méthodes de gestion de la base de données
-bool Candidat::ajouter(){
+bool Candidat::ajouter() {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO candidat (nom, email, telephone,  experience) "
-                  "VALUES (:nom, :email, :telephone, :experience)");
+    query.prepare("INSERT INTO candidat (nom, email, telephone, experience, cv) "
+                  "VALUES (:nom, :email, :telephone, :experience, :cv)");
 
     query.bindValue(":nom", nom);
     query.bindValue(":email", email);
     query.bindValue(":telephone", telephone);
-
     query.bindValue(":experience", experience);
+    query.bindValue(":cv", cv);  // Ajout de cv
 
     return query.exec();
 }
@@ -83,28 +86,29 @@ QSqlQueryModel* Candidat::afficher() {
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Email"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("Téléphone"));
     model->setHeaderData(4, Qt::Horizontal, QObject::tr("Expérience"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("CV"));  // Ajout de l'en-tête pour CV
 
     return model;
 }
 
-bool Candidat::supprimer(int id){
+bool Candidat::supprimer(int id) {
     QSqlQuery query;
     query.prepare("DELETE FROM candidat WHERE id = :id");
     query.bindValue(":id", id);
     return query.exec();
 }
 
-bool Candidat::modifier(int id){
+bool Candidat::modifier(int id) {
     QSqlQuery query;
 
     query.prepare("UPDATE candidat SET nom = :nom, email = :email, telephone = :telephone, "
-                  "experience = :experience WHERE id = :id");
+                  "experience = :experience, cv = :cv WHERE id = :id");
     query.bindValue(":id", id);
     query.bindValue(":nom", nom);
     query.bindValue(":email", email);
     query.bindValue(":telephone", telephone);
-
     query.bindValue(":experience", experience);
+    query.bindValue(":cv", cv);  // Mise à jour de cv
 
     return query.exec();
 }

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     // Charger le fichier de style QSS
-       QFile file("C:/Users/Wizin/Desktop/gestion_recrutement/Perstfic.qss"); // Assurez-vous que le chemin est correct
+       QFile file("C:/Users/Wizin/Desktop/SyNet.qss"); // Assurez-vous que le chemin est correct
        if (file.open(QFile::ReadOnly | QFile::Text)) {
            QTextStream stream(&file);
            QString styleSheet = stream.readAll();

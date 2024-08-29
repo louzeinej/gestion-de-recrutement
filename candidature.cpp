@@ -48,7 +48,7 @@ void Candidature::setStatut(const QString &statut) {
 bool Candidature::ajouter() {
     QSqlQuery query;
     query.prepare("INSERT INTO candidature (id_candidat, id_offre, date_candidature, statut) "
-                  "VALUES (:idCandidat, :idOffre, :dateCandidature, :statut)");
+                  "VALUES (:idCandidat, :idOffre, TO_DATE(:dateCandidature, 'YYYY-MM-DD'), :statut)");
 
     // Debugging output
     qDebug() << "Adding Candidature:";
@@ -71,11 +71,41 @@ bool Candidature::ajouter() {
 
 QSqlQueryModel* Candidature::afficher() {
     QSqlQueryModel *model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM candidature ORDER BY id_candidat, id_offre");
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID Candidat"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("ID Offre"));
+    QSqlQuery query;
+
+    // Prepare the SQL query
+    query.prepare("SELECT o.titre AS \"Titre Offre\", c.nom AS \"Nom Candidat\", "
+                  "ca.date_candidature AS \"Date Candidature\", ca.statut AS \"Statut\" "
+                  "FROM candidature ca "
+                  "JOIN offre o ON ca.id_offre = o.id "
+                  "JOIN candidat c ON ca.id_candidat = c.id "
+                  "ORDER BY ca.id_candidat, ca.id_offre");
+
+    // Execute the query
+    if (!query.exec()) {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+        return nullptr;
+    } else {
+        qDebug() << "Query executed successfully.";
+    }
+
+    // Set the model's query and check if it was successful
+    model->setQuery(query);
+    if (model->query().lastError().isValid()) {
+        qDebug() << "Model query error:" << model->query().lastError().text();
+    } else {
+        qDebug() << "Model query set successfully.";
+    }
+
+    // Set header data for columns
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Titre Offre"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom Candidat"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Date Candidature"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("Statut"));
+
+    // Optional: Print the number of rows and columns to confirm data is loaded
+    qDebug() << "Model row count:" << model->rowCount();
+    qDebug() << "Model column count:" << model->columnCount();
 
     return model;
 }
